@@ -253,7 +253,6 @@ love = '''
 █▓▓▓▓▓▓▓▓▓▓▓▓▓░█▒█░█▒█░▓▓▓▓▓▓▓▓▓▓▒▒▓▓█▒
 █▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░▓▓▓▓▓▓▓▓▓▓▒▒▓██▒
 █▓▓▓▓▓▓▓▓▓▓▓▓▓▓░▒██░░░▓▓▓▓▓▓▓▓▓▓▓▒▓▓█▓▒
-░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓█▓▒
 ░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▒
 ░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▒
 ░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███▓▓▓▓▓▓▓▓▓▓█▓▒
@@ -372,67 +371,45 @@ XXn::<~!!:              `!MR88RM!<<<<!MMMMM!MM<!!<~
 !??%H<<::<:               `"?XH<<<<<!MMMMM!MM<<<!<<
 '''
 
-from contextlib import suppress
 
-with suppress(ZeroDivisionError):
+class EXPLOSION(Exception):
+    """Exception raised for errors in the input salary.
 
-  class EXPLOSION(Exception):
-      """Exception raised for errors in the input salary.
+    Attributes:
+        salary -- input salary which caused the error
+        message -- explanation of the error
+    """
 
-      Attributes:
-          salary -- input salary which caused the error
-          message -- explanation of the error
-      """
-
-      def __init__(self, message=f"\n\n\n\n\t\t\t\t¯\_( ͡❛ ͜ʖ ͡❛)_/¯\n\n\n{exploded}\n\n\n\n{explosion}"):# message=("\n"+f"{emoji.emojize(':thumbs_down:')}"*40+kiss)):
-          
-          
-          # message = ""
-          self.message = message
-          
-          print(">>>>>>>>>", flush=True)
+    def __init__(self, message=f"\n\n\n\n\t\t\t\t¯\_( ͡❛ ͜ʖ ͡❛)_/¯\n\n\n{exploded}\n\n\n\n{explosion}"):# message=("\n"+f"{emoji.emojize(':thumbs_down:')}"*40+kiss)):
         
-          super().__init__(self.message)
+        
+        # message = ""
+        self.message = message
+        
+        print(">>>>>>>>>", flush=True)
+      
+        super().__init__(self.message)
 
-  print(
-  f"{emoji.emojize(':thumbs_down:')}"
-  )  
+print(
+f"{emoji.emojize(':thumbs_down:')}"
+)  
 
-  import logging 
-  class TracebackInfoFilter(logging.Filter):
-      """Clear or restore the exception on log records"""
-      def __init__(self, clear=True):
-          self.clear = clear
-      def filter(self, record):
-          if self.clear:
-              record._exc_info_hidden, record.exc_info = record.exc_info, None
-              # clear the exception traceback text cache, if created.
-              record.exc_text = None
-          elif hasattr(record, "_exc_info_hidden"):
-              record.exc_info = record._exc_info_hidden
-              del record._exc_info_hidden
-          return True
-
-  # for handler in logging.Handler:
-    
-      # if not any(isinstance(f, TracebackInfoFilter) for f in handler.filters):
-          # handler.addFilter(TracebackInfoFilter(clear=False))
-
-  # handler_with_no_tracebacks.addFilter(TracebackInfoFilter())
-
-  # try:
-  # tmp = 0 + "test"
-  # except ZeroDivisionError:
-    # raise EXPLOSION
-
-
-  1/0
+# for handler in logging.Handler:
   
-  i = 0
+    # if not any(isinstance(f, TracebackInfoFilter) for f in handler.filters):
+        # handler.addFilter(TracebackInfoFilter(clear=False))
 
-  if i == 0:
-    raise EXPLOSION
-exit()
+# handler_with_no_tracebacks.addFilter(TracebackInfoFilter())
+
+# try:
+# tmp = 0 + "test"
+# except ZeroDivisionError:
+  # raise EXPLOSION
+
+i = 0
+
+# if i == 0:
+#   raise EXPLOSION
 
 from time import sleep
 import sys
